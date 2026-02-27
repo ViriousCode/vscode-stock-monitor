@@ -1,6 +1,14 @@
 {
   "name": "stock-monitor",
   "publisher": "virious",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ViriousCode/vscode-stock-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ViriousCode/vscode-stock-monitor/issues"
+  },
+  "homepage": "https://github.com/ViriousCode/vscode-stock-monitor#readme",
   "displayName": "股票盯盘助手",
   "description": "在 VS Code 状态栏优雅、隐蔽地监控股票行情与异动告警",
   "version": "0.0.1",
