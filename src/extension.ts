@@ -20,13 +20,13 @@ export function activate(context: vscode.ExtensionContext) {
 	myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
 	context.subscriptions.push(myStatusBarItem);
 
-	const clickStockCommandId = 'stock-monitor.selectStock';
+	const clickStockCommandId = 'stock-monitor-minimalist.selectStock';
 	context.subscriptions.push(vscode.commands.registerCommand(clickStockCommandId, async () => {
-		const config = vscode.workspace.getConfiguration('stock-monitor');
+		const config = vscode.workspace.getConfiguration('stock-monitor-minimalist');
 		const stocks: string[] = config.get('stocks') || [];
 
 		if (stocks.length === 0) {
-			vscode.window.showWarningMessage('请先在设置中配置 stock-monitor.stocks');
+			vscode.window.showWarningMessage('请先在设置中配置 stock-monitor-minimalist.stocks');
 			return;
 		}
 
@@ -53,9 +53,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// 监听设置变化
 	context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(e => {
-		if (e.affectsConfiguration('stock-monitor.stocks') ||
-			e.affectsConfiguration('stock-monitor.alertThreshold') ||
-			e.affectsConfiguration('stock-monitor.updateInterval')) {
+		if (e.affectsConfiguration('stock-monitor-minimalist.stocks') ||
+			e.affectsConfiguration('stock-monitor-minimalist.alertThreshold') ||
+			e.affectsConfiguration('stock-monitor-minimalist.updateInterval')) {
 			updateStockSettings();
 		}
 	}));
@@ -69,7 +69,7 @@ function updateStockSettings() {
 		clearInterval(monitorInterval);
 	}
 
-	const config = vscode.workspace.getConfiguration('stock-monitor');
+	const config = vscode.workspace.getConfiguration('stock-monitor-minimalist');
 	const stocks: string[] = config.get('stocks') || [];
 
 	if (stocks.length === 0) {
@@ -96,7 +96,7 @@ function startMonitoring(stocks: string[]) {
 	const fetchStockData = async () => {
 		try {
 			// 每次请求时动态获取最新的预警阈值
-			const config = vscode.workspace.getConfiguration('stock-monitor');
+			const config = vscode.workspace.getConfiguration('stock-monitor-minimalist');
 			const alertThreshold = config.get<number>('alertThreshold') || 5.0;
 
 			const response = await fetch(apiUrl);
@@ -148,7 +148,7 @@ function startMonitoring(stocks: string[]) {
 	};
 
 	fetchStockData();
-	const config = vscode.workspace.getConfiguration('stock-monitor');
+	const config = vscode.workspace.getConfiguration('stock-monitor-minimalist');
 	// 获取用户设置的值，如果没有就默认 5000
 	let userInterval = config.get<number>('updateInterval') || 5000;
 

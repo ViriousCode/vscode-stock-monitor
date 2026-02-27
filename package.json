@@ -1,14 +1,14 @@
 {
-  "name": "stock-monitor",
+  "name": "stock-monitor-minimalist",
   "publisher": "virious",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ViriousCode/vscode-stock-monitor.git"
+    "url": "https://github.com/ViriousCode/vscode-stock-monitor-minimalist.git"
   },
   "bugs": {
-    "url": "https://github.com/ViriousCode/vscode-stock-monitor/issues"
+    "url": "https://github.com/ViriousCode/vscode-stock-monitor-minimalist/issues"
   },
-  "homepage": "https://github.com/ViriousCode/vscode-stock-monitor#readme",
+  "homepage": "https://github.com/ViriousCode/vscode-stock-monitor-minimalist#readme",
   "displayName": "股票盯盘助手",
   "description": "在 VS Code 状态栏优雅、隐蔽地监控股票行情与异动告警",
   "version": "0.0.1",
@@ -26,19 +26,19 @@
     "configuration": {
       "title": "stock",
       "properties": {
-        "stock-monitor.stocks": {
+        "stock-monitor-minimalist.stocks": {
           "type": "array",
           "default": [
             "sh000001"
           ],
           "description": "配置需要监控的股票代码数组"
         },
-        "stock-monitor.alertThreshold": {
+        "stock-monitor-minimalist.alertThreshold": {
           "type": "number",
           "default": 5,
           "description": "涨跌幅提醒阈值（百分比）。例如填 5，表示涨跌幅超过 5% 时会弹窗提醒。填 0 表示关闭提醒。"
         },
-        "stock-monitor.updateInterval": {
+        "stock-monitor-minimalist.updateInterval": {
           "type": "number",
           "default": 5000,
           "description": "数据刷新频率（单位：毫秒）。为防止被接口封禁 IP，内部强制最低限制为 3000 毫秒（3秒）。"
@@ -47,7 +47,7 @@
     },
     "commands": [
       {
-        "command": "stock-monitor.selectStock",
+        "command": "stock-monitor-minimalist.selectStock",
         "title": "查看详细监控数据"
       }
     ]
